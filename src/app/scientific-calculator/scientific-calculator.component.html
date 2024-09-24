@@ -1,0 +1,140 @@
+<div class="calculator-card mx-auto" #calculatorCard tabindex="0">
+  <mat-card class="calculator">
+    <!-- Output Display -->
+    <mat-card-header class="output-display text-center">
+      {{ expression || currentNumber }}
+    </mat-card-header>
+    
+    <!-- Calculator Body -->
+    <mat-card-content class="calculator-body">
+      <div *ngIf="!isMobile" class="calculator-layout">
+        <!-- Scientific Functions Container -->
+        <div class="scientific-functions">
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getSquareRoot()">√</button>
+            <button mat-raised-button color="primary" (click)="getAbsoluteValue()">|x|</button>
+            <button mat-raised-button color="primary" (click)="getSin()">sin</button>
+            <button mat-raised-button color="primary" (click)="getSquare()">x²</button>
+            <button mat-raised-button color="primary" (click)="getCube()">x³</button>
+            <button mat-raised-button color="primary" (click)="getNthRoot()">nth root</button>
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getSinh()">sinh</button>
+            <button mat-raised-button color="primary" (click)="getCosh()">cosh</button>
+            <button mat-raised-button color="primary" (click)="getTanh()">tanh</button>
+            <button mat-raised-button color="primary" (click)="getCos()">cos</button>
+            <button mat-raised-button color="primary" (click)="getTan()">tan</button>
+            <button mat-raised-button color="primary" (click)="getLog()">log</button>
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getLn()">ln</button>
+            <button mat-raised-button color="primary" (click)="getExponent()">e</button>
+            <button mat-raised-button color="primary" (click)="getPi()">π</button>
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getExp()">EXP</button>
+            <button mat-raised-button color="primary" (click)="getFactorial()">n!</button>
+          </div>
+        </div>
+  
+        <!-- Basic Functions Container -->
+        <div class="basic-functions">
+          <div class="row">
+            <button mat-raised-button color="accent" (click)="getNumber('7')">7</button>
+            <button mat-raised-button color="accent" (click)="getNumber('8')">8</button>
+            <button mat-raised-button color="accent" (click)="getNumber('9')">9</button>
+          </div>
+          
+          <div class="row">
+            <button mat-raised-button color="accent" (click)="getNumber('4')">4</button>
+            <button mat-raised-button color="accent" (click)="getNumber('5')">5</button>
+            <button mat-raised-button color="accent" (click)="getNumber('6')">6</button>
+          </div>
+          
+          <div class="row">
+            <button mat-raised-button color="accent" (click)="getNumber('1')">1</button>
+            <button mat-raised-button color="accent" (click)="getNumber('2')">2</button>
+            <button mat-raised-button color="accent" (click)="getNumber('3')">3</button>
+          </div>
+          
+          <div class="row">
+            <button mat-raised-button color="warn" (click)="getOperation('/')">/</button>
+            <button mat-raised-button color="accent" (click)="getNumber('0')">0</button>
+            <button mat-raised-button color="warn" (click)="getOperation('*')">*</button>
+            <button mat-raised-button color="warn" (click)="getOperation('-')">-</button>
+            <button mat-raised-button color="warn" (click)="getOperation('+')">+</button>
+            <button mat-raised-button color="warn" (click)="deleteLastEntry()">Del</button>
+            <button mat-raised-button color="warn" (click)="clear()">C</button>
+            <button mat-raised-button color="primary" (click)="getResult()">=</button>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="isMobile" class="mobile-layout">
+        <!-- Scientific Functions Container -->
+        <div class="scientific-functions mobile">
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getSquareRoot()">√</button>
+            <button mat-raised-button color="primary" (click)="getAbsoluteValue()">|x|</button>
+            <button mat-raised-button color="primary" (click)="getSin()">sin</button>
+            <button mat-raised-button color="primary" (click)="getSquare()">x²</button>
+            <button mat-raised-button color="primary" (click)="getCube()">x³</button>
+            <button mat-raised-button color="primary" (click)="getNthRoot()">nth root</button>
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getSinh()">sinh</button>
+            <button mat-raised-button color="primary" (click)="getCosh()">cosh</button>
+            <button mat-raised-button color="primary" (click)="getTanh()">tanh</button>
+            <button mat-raised-button color="primary" (click)="getCos()">cos</button>
+            <button mat-raised-button color="primary" (click)="getTan()">tan</button>
+            <button mat-raised-button color="primary" (click)="getLog()">log</button>
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getLn()">ln</button>
+            <button mat-raised-button color="primary" (click)="getExponent()">e</button>
+            <button mat-raised-button color="primary" (click)="getPi()">π</button>
+          </div>
+          <div class="row">
+            <button mat-raised-button color="primary" (click)="getExp()">EXP</button>
+            <button mat-raised-button color="primary" (click)="getFactorial()">n!</button>
+          </div>
+        </div>
+  
+        <!-- Basic Functions Container -->
+        <div class="basic-functions mobile">
+          <div class="row">
+            <button mat-raised-button color="accent" (click)="getNumber('7')">7</button>
+            <button mat-raised-button color="accent" (click)="getNumber('8')">8</button>
+            <button mat-raised-button color="accent" (click)="getNumber('9')">9</button>
+          </div>
+          
+          <div class="row">
+            <button mat-raised-button color="accent" (click)="getNumber('4')">4</button>
+            <button mat-raised-button color="accent" (click)="getNumber('5')">5</button>
+            <button mat-raised-button color="accent" (click)="getNumber('6')">6</button>
+          </div>
+          
+          <div class="row">
+            <button mat-raised-button color="accent" (click)="getNumber('1')">1</button>
+            <button mat-raised-button color="accent" (click)="getNumber('2')">2</button>
+            <button mat-raised-button color="accent" (click)="getNumber('3')">3</button>
+          </div>
+  
+          <div class="row">
+              <button mat-raised-button color="warn" (click)="getOperation('+')">+</button>
+              <button mat-raised-button color="accent" (click)="getNumber('0')">0</button>
+              <button mat-raised-button color="warn" (click)="getOperation('-')">-</button>
+            </div>
+          
+          <div class="row">
+            <button mat-raised-button color="warn" (click)="getOperation('/')">/</button>
+            <button mat-raised-button color="warn" (click)="getOperation('*')">*</button>
+            <button mat-raised-button color="warn" (click)="deleteLastEntry()">Del</button>
+            <button mat-raised-button color="warn" (click)="clear()">C</button>
+            <button mat-raised-button color="primary" (click)="getResult()">=</button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

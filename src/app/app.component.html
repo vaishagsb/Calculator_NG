@@ -1,0 +1,59 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span class="logo">CalcPro</span>
+  <span class="spacer"></span>
+  
+  <!-- Desktop Menu -->
+  <ng-container *ngIf="isScreenLarge">
+    <div class="desktop-menu">
+      <!-- Update button to trigger scrollToCalculator method -->
+      <button mat-button (click)="scrollToCalculator()">Scientific Calculator</button>
+      <button mat-button routerLink="/features">Features</button>
+      <button mat-button routerLink="/contact">Contact</button>
+    </div>
+  </ng-container>
+
+  <!-- Mobile Menu Toggle -->
+  <button mat-icon-button (click)="toggleMenu()" aria-label="Toggle navigation" class="menu-toggle">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="isMenuOpen" class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item (click)="scrollToCalculator()">Scientific Calculator</a>
+      <a mat-list-item routerLink="/features">Features</a>
+      <a mat-list-item routerLink="/contact">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Hero Section -->
+    <mat-card class="hero-content">
+      <mat-card-content>
+        <h1 class="headline">The Ultimate Scientific Calculator</h1>
+        <p class="sub-headline">Perform complex calculations with ease and precision, right from your browser.</p>
+        <button mat-raised-button color="accent" class="cta-primary" (click)="scrollToCalculator()">Get Started</button>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <mat-card class="calculator-card" #calculatorCard>
+        <app-scientific-calculator></app-scientific-calculator>
+      </mat-card>
+    </main>
+
+    <!-- Footer -->
+    <mat-card class="footer">
+      <div class="footer-content">
+        <p>&copy; 2024 CalcPro. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a mat-button href="#">Privacy Policy</a></li>
+          <li><a mat-button href="#">Terms of Service</a></li>
+          <li><a mat-button href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </mat-card>
+  </mat-sidenav-content>
+</mat-sidenav-container>
